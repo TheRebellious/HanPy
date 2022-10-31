@@ -43,15 +43,12 @@ def decimalToHex(input: int):
         input = remainder * 16
         values.append(int(input))
         remainder = input - int(input)
-    
-    if values[len(values)-1] == 0 and og < 128:
-        values.remove(0)
-    if values[0] == 0 and og < 256:
-        values.remove(0)
+    try:
+        if (not (og % 16 == 0)) or len(values) >2:
+            values.remove(0)
+    except:
+        pass
     output = ""
     for x in values:
         output += decdict[x]
     return output
-
-
-print(decimalToHex(86))
