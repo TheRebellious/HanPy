@@ -6,14 +6,12 @@ def hexToDecimal(hexadecimal: str):
 def decimalToHex(decimal: int):
     return hexDecimal.decimalToHex(decimal)
 
-# hex to text
 def hexToText(hexadecimal: str):
     output = ""
     for x in range(0, len(hexadecimal), 2):
         output += chr(hexToDecimal(hexadecimal[x:x+2]))
     return output
 
-# text to hex
 def textToHex(text: str):
     output = ""
     for x in text:
