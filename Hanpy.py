@@ -20,9 +20,9 @@ def textToHex(text: str):
 
 # returns a random 2 dimensional list of hexadecimals and their decimal values
 def randomHexList():
-    import random
+    from random import randint
     output = []
-    for x in range(random.randint(1, 10)):
-        randomint = decimalToHex(random.randint(0, 255))
+    for x in range(randint(1, 10)):
+        randomint = decimalToHex(randint(0, 255))
         output.append([hexToDecimal(randomint), randomint])
     return output
