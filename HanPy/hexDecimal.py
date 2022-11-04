@@ -19,7 +19,7 @@ hexdict = {
 
 decdict = {v: k for k, v in hexdict.items()}
 
-
+# Converts a hexadecimal string into a decimal integer
 def hexToDecimal(input: str):
     input = input[::-1]
     values = []
@@ -30,7 +30,7 @@ def hexToDecimal(input: str):
         output += x
     return output
 
-
+# Converts a decimal integer into a hexadecimal string
 def decimalToHex(input: int):
     og = input
     totalLen = len(str(input))

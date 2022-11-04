@@ -1,17 +1,21 @@
 import hexDecimal
 
+# Converts a hexadecimal string into a decimal integer
 def hexToDecimal(hexadecimal: str):
     return hexDecimal.hexToDecimal(hexadecimal)
 
+# Converts a decimal integer into a hexadecimal string
 def decimalToHex(decimal: int):
     return hexDecimal.decimalToHex(decimal)
 
+# Converts a hexadecimal string into a text string
 def hexToText(hexadecimal: str):
     output = ""
     for x in range(0, len(hexadecimal), 2):
         output += chr(hexToDecimal(hexadecimal[x:x+2]))
     return output
 
+# Converts a text string into a hexadecimal string
 def textToHex(text: str):
     output = ""
     for x in text:
