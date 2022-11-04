@@ -52,3 +52,4 @@ def decimalToHex(input: int):
     for x in values:
         output += decdict[x]
     return output
+
