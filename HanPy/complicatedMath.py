@@ -1,6 +1,6 @@
 import threading
 import wx
-import solveEquation
+from solveEquation import getAnswer
 
 
 def solveEquation(equation):
@@ -20,19 +20,18 @@ class MyFrame(wx.Frame):
             150, 30), label='Solve equation')
         my_btn.Bind(wx.EVT_BUTTON, self.on_press)
 
-        self.percentage = wx.StaticText(
-            panel, size=(30, 20), pos=(187, 100), label='100%')
-
         self.solution = wx.TextCtrl(panel, pos=(5, 125), size=(375, 300), style=wx.TE_MULTILINE ^ wx.TE_READONLY) 
-        self.solution.write('Solution: \n')
-        self.solution.write('do it yourself moron')
+        self.solution.write('Solution will come here \n')
 
         self.Show()
 
     def on_press(self, event):
         equation = self.txtAmount.GetValue()
-        self.percentage.SetLabel('0%')
-        self.percentage.Refresh()
+        answer = getAnswer(equation)
+        self.solution.Clear()
+        self.solution.write(answer)
+            
+
         
 
 if __name__ == '__main__':
