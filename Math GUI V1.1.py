@@ -21,15 +21,15 @@ class MyFrame(wx.Frame):
 
         self.solution = wx.TextCtrl(panel, pos=(5, 125), size=(
             375, 300), style=wx.TE_MULTILINE ^ wx.TE_READONLY)
-        self.solution.write('Solution will come here \n')
 
         self.Show()
 
     def on_press(self, event):
+        global first
         equation = self.txtAmount.GetValue()
         answer = getAnswer(equation)
         self.solution.Clear()
-        self.solution.write(answer)
+        self.solution.AppendText(answer+"\r\n\r\n")
 
 
 if __name__ == '__main__':

@@ -1,17 +1,19 @@
 import math
-import time
-
+import string
 
 detectionString = "()^√*/+-"
 answer = ""
+
+
 # returns a True or False depending on whether the equation is solvable or not
-
-
 def validate(equation: str):
     LbracketCount = 0
     RbracketCount = 0
     if equation == "":
         return False
+    for x in string.ascii_letters:
+        if x in equation:
+            return False
     for x in equation:
         if x == '(':
             LbracketCount += 1
@@ -169,11 +171,6 @@ def solve(equations: list):
             equations[equations.index(x)] = temp2
     return equations
 
-
-# equation = "(2*15)+(304-2)"
-# equation = "((2+2)*(15+4))*(3+3)"
-# equation = "(20*10)-(10*10)"
-# equation = "(√((3^2)+(4^2)))*2"
 
 def getAnswer(equation: str):
     global answer
