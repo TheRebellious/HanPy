@@ -1,4 +1,3 @@
-import threading
 import wx
 from solveEquation import getAnswer
 
@@ -20,7 +19,8 @@ class MyFrame(wx.Frame):
             150, 30), label='Solve equation')
         my_btn.Bind(wx.EVT_BUTTON, self.on_press)
 
-        self.solution = wx.TextCtrl(panel, pos=(5, 125), size=(375, 300), style=wx.TE_MULTILINE ^ wx.TE_READONLY) 
+        self.solution = wx.TextCtrl(panel, pos=(5, 125), size=(
+            375, 300), style=wx.TE_MULTILINE ^ wx.TE_READONLY)
         self.solution.write('Solution will come here \n')
 
         self.Show()
@@ -30,9 +30,7 @@ class MyFrame(wx.Frame):
         answer = getAnswer(equation)
         self.solution.Clear()
         self.solution.write(answer)
-            
 
-        
 
 if __name__ == '__main__':
     app = wx.App()
