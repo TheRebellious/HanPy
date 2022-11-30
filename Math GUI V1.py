@@ -1,5 +1,5 @@
 import wx
-from solveEquation import getAnswer
+from HanPy.solveEquation import getAnswer
 
 
 def solveEquation(equation):
