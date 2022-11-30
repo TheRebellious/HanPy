@@ -1,0 +1,21 @@
+look if brackets are present
+	solve all equations inside brackets in order of the powerPyramid
+	replace brackets with the final number
+
+look if square roots are present
+	solve the square root
+
+look if "to the power of"s are present
+	solve the "to the power of"s
+
+look if multiplacations are present
+	solve the multiplacations
+
+look if "divide by"s are present
+	solve the "divide by"s
+
+look if add's are present
+	solve the add's
+
+look if subtractions are present
+	solve the subtractions
