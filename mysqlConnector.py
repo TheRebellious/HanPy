@@ -4,11 +4,11 @@ import mysql.connector
 class dbConnector:
     mydb: mysql.connector.MySQLConnection
 
-    def __init__(self, dbhost, dbpassword, dbname):
+    def __init__(self, dbhost,user, dbpassword, dbname):
         self.dbname = dbname
         self.mydb: mysql.connector.MySQLConnection = mysql.connector.connect(
             host=dbhost,
-            user=dbhost,
+            user=user,
             password=dbpassword,
             database=dbname
         )
