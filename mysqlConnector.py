@@ -1,28 +1,57 @@
 import mysql.connector
+from mysql.connector import (connection)
+from mysql.connector import errorcode
 
 
-class dbConnector:
-    mydb: mysql.connector.MySQLConnection
+class Databaseconnector:
+    def __init__(self, User, Password, Host, Database):
+        self.connection: mysql.connector.MySQLConnection = mysql.connector.MySQLConnection(
+            user=User, password=Password, host=Host, database=Database)
 
-    def __init__(self, dbhost,user, dbpassword, dbname):
-        self.dbname = dbname
-        self.mydb: mysql.connector.MySQLConnection = mysql.connector.connect(
-            host=dbhost,
-            user=user,
-            password=dbpassword,
-            database=dbname
-        )
-        self.con = self.mydb.cursor()
-        print("----------------------\ndb connected\n----------------------")
+    def get(self, table: str, colomn: str):
+        cursor = self.connection.cursor()
 
-    def fetchAllData(self, table: str):
-        self.con.execute("SELECT * FROM " + table)
+        query = f"SELECT {colomn} FROM {table}"
+        cursor.execute(query)
 
-        rs = self.con.fetchall()
+        returnList = []
+        for x in cursor.fetchall():
+            returnList.append(x)
 
-        for x in rs:
-            print(x)
+        return returnList
 
-    def insertData(self, table, data):
-        query = "INSERT INTO " + self.dbname + "." + table
-        self.con.execute(query, data)
+    def insert(self, table: str, data: list):
+        cursor = self.connection.cursor()
+
+        query = f"INSERT INTO {table} VALUES ("
+        for column in data:
+            print(column, data.index(column))
+            if type(column) == str:
+                query += f"\'{column}\'"  # adds 'colomn'
+            else:
+                query += f"{column}"
+            if not data.index(column) == len(data)-1:
+                query += ","
+            else:
+                query += ")"
+        print(query[len(query)-1:])
+        if query[len(query)-1:] != ")":
+            query = query[:len(query)-1] + ")"
+        print(query)
+        try:
+            cursor.execute(query)
+        except Exception as e:
+            print(e)
+        self.connection.commit()
+
+    def update(self, table: str, column: str, data: str, idKey: str, locker: int):
+        cursor = self.connection.cursor()
+
+        query = f"UPDATE {table} SET {column} = {data} WHERE {idKey} = {locker} "
+        print(query)
+        try:
+            cursor.execute(query)
+
+            self.connection.commit()
+        except Exception as e:
+            print(e)
